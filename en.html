@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xuanlei Bu · Portfolio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "PingFang SC", "LXGW WenKai", "Noto Serif SC", "Microsoft YaHei", serif;
+            color: #3a2a24;
+            background-color: #faf4ef;
+            background-image: radial-gradient(circle, rgba(196,90,74,0.05) 1.5px, transparent 1.5px);
+            background-size: 30px 30px;
+            line-height: 1.8;
+        }
+
+        .container { max-width: 920px; margin: 0 auto; padding: 0 28px; }
+
+        /* ── Header ── */
+        header {
+            background: linear-gradient(135deg, #c45a4a 0%, #e2967a 50%, #edd0c0 100%);
+            padding: 70px 0 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header .dots-1 {
+            position: absolute; top: -50px; right: -50px;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 3px, transparent 3px);
+            background-size: 22px 22px;
+        }
+        header .dots-2 {
+            position: absolute; bottom: -40px; left: -40px;
+            width: 160px; height: 160px;
+            background: radial-gradient(circle, rgba(255,255,255,0.06) 2.5px, transparent 2.5px);
+            background-size: 18px 18px;
+        }
+        header h1 {
+            font-size: 38px; font-weight: 500;
+            letter-spacing: 6px; position: relative;
+            color: #fff;
+        }
+        header .sub {
+            font-size: 15px; color: rgba(255,255,255,0.85);
+            margin-top: 8px; letter-spacing: 3px; position: relative;
+        }
+        header .info {
+            margin-top: 18px; font-size: 13px;
+            color: rgba(255,255,255,0.7); position: relative;
+            letter-spacing: 1px;
+        }
+
+        /* ── Sections ── */
+        section { padding: 56px 0; }
+
+        .hr {
+            width: 60px; margin: 0 auto;
+            border: none; border-top: 1px solid rgba(196,90,74,0.15);
+        }
+
+        .sec-title {
+            font-size: 15px; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 3px; color: #c45a4a;
+            text-align: center; margin-bottom: 36px;
+        }
+        .sec-title::before { content: "· "; }
+        .sec-title::after { content: " ·"; }
+
+        /* ── About ── */
+        .about-text {
+            text-align: center;
+            font-size: 16px; color: #5a4038;
+            max-width: 620px; margin: 0 auto;
+            line-height: 2;
+        }
+        .hobby-tags {
+            display: flex; justify-content: center; flex-wrap: wrap;
+            gap: 10px; margin-top: 18px;
+        }
+        .hobby-tags span {
+            background: #fff; color: #c45a4a;
+            padding: 5px 18px; border-radius: 20px;
+            font-size: 12px;
+            border: 1px solid rgba(196,90,74,0.12);
+        }
+
+        /* ── Cards ── */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 20px; }
+        .card {
+            background: #fff; border-radius: 8px; overflow: hidden;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            border: 1px solid rgba(196,90,74,0.06);
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(196,90,74,0.08);
+        }
+        .card img { width: 100%; height: 180px; object-fit: cover; display: block; background: #f0e8e2; }
+        .card .info { padding: 14px 16px 16px; }
+        .card .info .tag { font-size: 10px; color: #c45a4a; font-weight: 600; letter-spacing: 1px; margin-bottom: 4px; }
+        .card .info h3 { font-size: 15px; font-weight: 600; margin-bottom: 3px; color: #3a2a24; }
+        .card .info p { font-size: 13px; color: #7a6054; line-height: 1.6; }
+
+        /* ── Data list ── */
+        .data-list { list-style: none; max-width: 700px; margin: 0 auto; }
+        .data-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(196,90,74,0.06);
+            display: flex; justify-content: space-between; align-items: flex-start;
+            gap: 12px;
+        }
+        .data-list li:last-child { border-bottom: none; }
+        .data-list .name { font-weight: 600; font-size: 15px; color: #3a2a24; }
+        .data-list .desc { font-size: 13px; color: #7a6054; line-height: 1.6; }
+        .data-list .tools { font-size: 12px; color: #c45a4a; font-weight: 500; flex-shrink: 0; white-space: nowrap; padding-top: 2px; }
+        }
+
+        /* ── Auto grid ── */
+        .auto-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin-top: 10px; }
+        .auto-card { background: #fff; border-radius: 8px; padding: 18px; border: 1px solid rgba(196,90,74,0.06); }
+        .auto-card .tag { font-size: 11px; color: #c45a4a; font-weight: 600; margin-bottom: 4px; }
+        .auto-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: #3a2a24; }
+        .auto-card p { font-size: 13px; color: #7a6054; line-height: 1.6; }
+
+        /* ── Gallery ── */
+        .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+        .gallery-item {
+            border-radius: 6px; overflow: hidden;
+            border: 1px solid rgba(196,90,74,0.06);
+            cursor: pointer; transition: all 0.25s ease;
+        }
+        .gallery-item:hover { transform: translateY(-2px); }
+        .gallery-item img { width: 100%; height: 145px; object-fit: cover; display: block; }
+        .gallery-item .cap {
+            padding: 8px 10px 10px; font-size: 12px;
+            color: #7a6054; text-align: center; line-height: 1.4;
+        }
+
+        /* ── Link button ── */
+        .link-btn {
+            display: inline-block; padding: 6px 16px;
+            background: #c45a4a; color: #fff;
+            text-decoration: none; border-radius: 20px;
+            font-size: 12px; transition: background 0.2s;
+            white-space: nowrap; flex-shrink: 0;
+        }
+        .link-btn:hover { background: #b04a3a; }
+
+        /* ── Footer ── */
+        footer {
+            background: #3a2a24;
+            color: rgba(255,255,255,0.4);
+            text-align: center;
+            padding: 36px 0;
+            font-size: 12px; letter-spacing: 1px;
+        }
+
+        /* ── Lightbox ── */
+        .lightbox {
+            display: none; position: fixed; inset: 0;
+            background: rgba(58,42,36,0.92);
+            z-index: 999; cursor: pointer;
+            align-items: center; justify-content: center;
+        }
+        .lightbox.open { display: flex; }
+        .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 4px; }
+        .lightbox .close { position: absolute; top: 24px; right: 32px; color: #fff; font-size: 30px; cursor: pointer; }
+
+        @media (max-width: 640px) {
+            header { padding: 48px 0 36px; }
+            header h1 { font-size: 24px; letter-spacing: 4px; }
+            .grid { grid-template-columns: 1fr; }
+            .gallery { grid-template-columns: 1fr 1fr; }
+            .auto-grid { grid-template-columns: 1fr 1fr; }
+        }
+    
+        .sec-title {
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .sec-title::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 2px;
+            background: #c45a4a;
+            opacity: 0.3;
+            transition: width 0.3s ease;
+        }
+        section:hover .sec-title::after {
+            width: 50px;
+            opacity: 0.6;
+        }
+        .card .info .tag {
+            display: inline-block;
+            background: rgba(196,90,74,0.06);
+            padding: 2px 10px;
+            border-radius: 10px;
+            margin-bottom: 6px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+        @media (max-width: 640px) {
+            .gallery { grid-template-columns: 1fr 1fr; }
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="close">&times;</span>
+    <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+function openLightbox(s) { document.getElementById('lightbox-img').src = s; document.getElementById('lightbox').classList.add('open'); }
+function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+<header>
+    <div class="dots-1"></div>
+    <div class="dots-2"></div>
+    <h1>Xuanlei Bu</h1>
+    <div class="sub">Content Creator · Data Analyst · Storyteller</div>
+    <div class="info">JSNU · Chinese Lang. & Lit. (Education)  ｜  CityU HK · MA Chinese & History (2026 Fall)</div>
+    <div style="position:absolute;top:20px;right:28px;z-index:10;display:flex;gap:10px;">
+        <a href="index.html" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;letter-spacing:1px;padding:4px 10px;border:1px solid rgba(255,255,255,0.15);border-radius:4px;">中</a>
+        <a href="en.html" style="color:#fff;text-decoration:none;font-size:13px;letter-spacing:1px;padding:4px 10px;border:1px solid rgba(255,255,255,0.3);border-radius:4px;">EN</a>
+    </div>
+</header>
+
+<section>
+    <div class="container">
+        <div class="about-text">
+            Three terms of finance media experience, 560+ published articles.<br>
+            Trained in Chinese literature, yet found my place between data and words.<br>
+            Moving to Hong Kong soon, ready to write the next chapter.
+        </div>
+        <div class="hobby-tags">
+            <span>🎭 Musical Theatre</span>
+            <span>✍️ Creative Writing</span>
+            <span>🎪 Drama</span>
+            <span>📖 Reading</span>
+        </div>
+    </div>
+</section><hr class="hr">
+
+<section>
+    <div class="container">
+        <div class="sec-title">Financial Content</div>
+        <p style="text-align:center; color:#7a6054; margin-bottom:24px; font-size:14px;">Datayes internship — selected financial news coverage. Click images to enlarge.</p>
+        <div class="grid">
+            <div class="card" onclick="openLightbox('images/financial_news_1.png')">
+                <img src="images/financial_news_1.png" alt="财经资讯" loading="lazy">
+                <div class="info"><div class="tag">Market News</div><h3>热点报道</h3><p>Covering capital markets and macro news with rapid response to hot topics</p></div>
+            </div>
+            <div class="card" onclick="openLightbox('images/financial_news_2.png')">
+                <img src="images/financial_news_2.png" alt="研报" loading="lazy">
+                <div class="info"><div class="tag">Research</div><h3>海外研报翻译</h3><p>Translating overseas research reports and extracting key insights</p></div>
+            </div>
+            <div class="card" onclick="openLightbox('images/financial_news_3.png')">
+                <img src="images/financial_news_3.png" alt="市场数据" loading="lazy">
+                <div class="info"><div class="tag">Market Data</div><h3>数据日报</h3><p>Tracking limit-up stocks, block trades, and capital flow data</p></div>
+            </div>
+            <div class="card" onclick="openLightbox('images/r.datayes.com_admin_feed_list.png')">
+                <img src="images/r.datayes.com_admin_feed_list.png" alt="后台" loading="lazy">
+                <div class="info"><div class="tag">Backend</div><h3>资讯后台</h3><p>Financial news system management and content distribution</p></div>
+            </div>
+
+            <div class="card" onclick="openLightbox('images/deepseek_analysis.png')">
+                <img src="images/deepseek_analysis.png" alt="AI" loading="lazy">
+                <div class="info"><div class="tag">AI</div><h3>AI 辅助分析</h3><p>Exploring AI tools in financial data analysis</p></div>
+            </div>
+            <div class="card" onclick="openLightbox('images/financial_news_4.png')">
+                <img src="images/financial_news_4.png" alt="财经快讯" loading="lazy">
+                <div class="info"><div class="tag">Flash News</div><h3>每日快讯精选</h3><p>Covering market updates, industry news, and major events</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="hr">
+
+<section>
+    <div class="container">
+        <div class="sec-title">Financial Content · More Works</div>
+        <p style="text-align:center; color:#7a6054; margin-bottom:24px; font-size:14px;">More financial news screenshots produced during Datayes internship</p>
+        <div class="grid">
+            <div class="card" onclick="openLightbox('images/financial_news_5.png')">
+                <img src="images/financial_news_5.png" alt="财经" loading="lazy">
+                <div class="info"><div class="tag">Market News</div><h3>资本市场动态</h3><p>Covers macro-economic policy and market trends</p></div>
+            </div>
+            <div class="card" onclick="openLightbox('images/financial_news_6.png')">
+                <img src="images/financial_news_6.png" alt="数据" loading="lazy">
+                <div class="info"><div class="tag">Market Data</div><h3>涨停数据日报</h3><p>Daily tracking of limit-up stocks and capital flow analysis</p></div>
+            </div>
+            <div class="card" onclick="openLightbox('images/financial_news_7.png')">
+                <img src="images/financial_news_7.png" alt="研报" loading="lazy">
+                <div class="info"><div class="tag">Research</div><h3>海外研报翻译</h3><p>Translating and interpreting overseas research report insights</p></div>
+            </div>
+            <div class="card" onclick="openLightbox('images/financial_news_8.png')">
+                <img src="images/financial_news_8.png" alt="产业" loading="lazy">
+                <div class="info"><div class="tag">产业新闻</div><h3>行业深度追踪</h3><p>Covers industry dynamics and development trends</p></div>
+            </div>
+            <div class="card" onclick="openLightbox('images/financial_news_9.png')">
+                <img src="images/financial_news_9.png" alt="宏观" loading="lazy">
+                <div class="info"><div class="tag">Macro</div><h3>Policy Analysis</h3><p>Tracks State Council and central bank policy updates</p></div>
+            </div>
+            <div class="card" onclick="openLightbox('images/r.datayes.com_admin_feed_list.png')">
+                <img src="images/r.datayes.com_admin_feed_list.png" alt="后台" loading="lazy">
+                <div class="info"><div class="tag">Backend</div><h3>资讯管理系统</h3><p>Content management backend screenshot</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="hr">
+
+<section>
+    <div class="container">
+        <div class="sec-title">Data Analysis</div>
+        <div class="data-list">
+            <li><div><div class="name">Limit-Up Attribution Analysis</div><div class="desc">使用 Python 对每日涨停个股进行归因分类，梳理驱动因素与市场逻辑</div></div><div class="tools">Python + Excel</div></li>
+            <li><div><div class="name">Block Trade Capital Flow Review</div><div class="desc">跟踪龙虎榜资金动态，分析主力资金流向与市场情绪变化</div></div><div class="tools">Excel</div></li>
+            <li><div><div class="name">Macro Data Forecast</div><div class="desc">围绕经济工作会议、美联储政策等完成数据整理与前瞻分析</div></div><div class="tools">Excel</div></li>
+            <li><div><div class="name">A-Share Daily Infographic</div><div class="desc">使用 Axure RP 设计数据可视化原型，将市场数据转化为每日图解</div></div><div class="tools">Axure RP</div></li>
+        </div>
+    </div>
+</section>
+
+<hr class="hr">
+
+<section>
+    <div class="container">
+        <div class="sec-title">Limit-Up Heatmap · Automation</div>
+        <p style="text-align:center; color:#7a6054; margin-bottom:14px; font-size:14px;">使用 AI Agent 构建的每日自动更新工具，收盘后自动完成热点统计、高度计算、Excel 图表更新</p>
+        <div class="auto-grid">
+            <div class="auto-card"><div class="tag">01 筛选</div><h3>板块筛选</h3><p>从全市场涨停数据中筛选 7–11 个代表性热点板块</p></div>
+            <div class="auto-card"><div class="tag">02 连板</div><h3>连板判断</h3><p>自动View日K线，计算实际连板高度</p></div>
+            <div class="auto-card"><div class="tag">03 汇总</div><h3>板块高度</h3><p>汇总个股高度，去重处理跨板块归属</p></div>
+            <div class="auto-card"><div class="tag">04 图表</div><h3>图表更新</h3><p>自动更新热力图、趋势图，保留历史数据</p></div>
+            <div class="auto-card"><div class="tag">05 校验</div><h3>校验输出</h3><p>检查清单确保日期和数据全部正确</p></div>
+        </div>
+    </div>
+</section>
+
+<hr class="hr">
+
+<section>
+    <div class="container">
+            <div class="sec-title">Published Reports</div>
+        <p style="text-align:center; color:#7a6054; margin-bottom:16px; font-size:14px;">News articles published during internships (print & TV)</p>
+
+        <div class="sec-title" style="font-size:13px; margin-bottom:14px;">Changzhou Wujin Media Center · Reports</div>
+        <div class="data-list" style="margin-top:10px;">
+            <li><div><div class="name">"Dragon City Students" Spring Festival Homecoming Event</div><div class="desc">Coverage of Wujin district Spring Festival student homecoming event (2024-01-19)</div></div></li>
+            <li><div><div class="name">Luoyang Town "Warm Winter" Labor Union Care Campaign</div><div class="desc">Comforting workers braving the cold (2024-01-25)</div></div></li>
+            <li><div><div class="name">Xutang Ferry: Enhanced Safety for Spring Festival Travel</div><div class="desc">Special report on ferry safety upgrades during Spring Festival (2024-01-30)</div></div></li>
+            <li><div><div class="name">Binhu Sewage Treatment Plant Phase II Progress Exceeds Expectations</div><div class="desc">Water environment management project progress report</div></div></li>
+            <li><div><div class="name">Haosen Digital Transformation · Wujin Station Spring Festival · Committee Member Profile</div><div class="desc">Multiple news reports from February 2024</div></div></li>
+        </div>
+
+        <div class="sec-title" style="font-size:13px; margin-top:22px; margin-bottom:14px;">CBN Pudong Channel · Shanghai FTZ Reports</div>
+        <div class="data-list" style="margin-top:10px;">
+            <li><div style="padding-right:14px;"><div class="name">上海自贸区创新金融科技应用场景 深入推进金融产业聚集</div><div class="desc">Independent feature on Shanghai FTZ — Article 1</div></div><a href="images/papers/上海自贸区创新金融科技应用场景 深入推进金融产业聚集.pdf" class="link-btn" target="_blank">View</a></li>
+            <li><div style="padding-right:14px;"><div class="name">上海自贸区外商投资准入负面清单从190条缩减至27条</div><div class="desc">Independent feature on Shanghai FTZ — Article 2</div></div><a href="images/papers/上海自贸区外商投资准入负面清单从190条缩减至27条.pdf" class="link-btn" target="_blank">View</a></li>
+            <li><div style="padding-right:14px;"><div class="name">推进上海自贸区高水平制度型开放 33条试点落地实施</div><div class="desc">Independent feature on Shanghai FTZ — Article 3</div></div><a href="images/papers/推进上海自贸区高水平制度型开放 33条试点落地实施.pdf" class="link-btn" target="_blank">View</a></li>
+        </div>
+    </div>
+</section>
+
+<hr class="hr">
+
+<section>
+    <div class="container">
+        <div class="sec-title">学术
+        <div class="data-list">
+            <li>
+                <div style="padding-right:14px;">
+                    <div class="name">Int'l Conference Paper (Independent Author)</div>
+                    <div class="desc">"Rhythm and Pacing in the Plot Design of Youth Romance Films" — 2025 4th Int'l Conf. on Science Education and Art Appreciation</div>
+                </div>
+                <a href="images/papers/conference_paper.pdf" class="link-btn" target="_blank">下载</a>
+            </li>
+            <li>
+                <div style="padding-right:14px;">
+                    <div class="name">毕业论文</div>
+                    <div class="desc">《体育解说员语用身份的动态建构研究》</div>
+                </div>
+                <a href="images/papers/thesis.pdf" class="link-btn" target="_blank">下载</a>
+            </li>
+            <li>
+                <div>
+                    <div class="name">National Innovation Program — Deputy Lead</div>
+                    <div class="desc">Drama-Based Writing Education for Middle School Students (2024–2025)</div>
+                </div>
+            </li>
+        </div>
+    </div>
+</section>
+
+<hr class="hr">
+
+<section>
+    <div class="container">
+        <div class="sec-title">TV News</div>
+        <p style="text-align:center; color:#7a6054; margin-bottom:4px; font-size:14px;">实习期间参与制作的新闻作品</p>
+        <div class="data-list" style="margin-top:10px;">
+            <li style="border-bottom-color:rgba(196,90,74,0.04);"><div><div class="name" style="color:#b04a3a;">第一财经（CBN）· 浦东频道</div><div class="desc">实习编导 / 剪辑</div></div></li>
+            <li><div style="padding-left:12px;"><div class="name">上海自贸区专题报道（3篇）</div><div class="desc">独立完成选题策划、资料收集、采访与撰稿，制作成电视新闻播出</div></div></li>
+            <li style="margin-bottom:8px;"><div style="padding-left:12px;"><div class="name">电视新闻剪辑（30+条）</div><div class="desc">使用 Premiere 完成电视新闻及新媒体短视频的剪辑</div></div></li>
+
+            <li style="border-bottom-color:rgba(196,90,74,0.04);"><div><div class="name" style="color:#b04a3a;">常州武进融媒体中心</div><div class="desc">实习记者 / 编辑（两期）</div></div></li>
+            <li><div style="padding-left:12px;"><div class="name">新闻采访（22次）</div><div class="desc">独立完成外出采访、信息收集、现场记录</div></div></li>
+            <li><div style="padding-left:12px;"><div class="name">报纸新闻稿（10篇）</div><div class="desc">完成报纸新闻稿的撰写与编辑</div></div></li>
+            <li><div style="padding-left:12px;"><div class="name">电视新闻剪辑（20条）</div><div class="desc">完成电视新闻的剪辑工作</div></div></li>
+        </div>
+    </div>
+</section>
+
+<hr class="hr">
+
+<section>
+    <div class="container">
+        <div class="sec-title">Drama Club</div>
+        <p style="text-align:center; color:#7a6054; margin-bottom:16px; font-size:14px;">潮鸣剧社 · 社长 / 舞美 / 舞台监督（2023–2025）—— 点击View大图</p>
+        <div class="gallery">
+            <div class="gallery-item" onclick="openLightbox('images/drama/%E9%9B%A8%E8%8A%B1%E5%8F%B0%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%8E%9F%E5%88%9B%E5%89%A7%E6%9C%AC%E5%A4%A7%E8%B5%9B.jpg')">
+                <img src="images/drama/%E9%9B%A8%E8%8A%B1%E5%8F%B0%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%8E%9F%E5%88%9B%E5%89%A7%E6%9C%AC%E5%A4%A7%E8%B5%9B.jpg" alt="雨花台" loading="lazy">
+                <div class="cap">雨花台大学生原创剧本大赛</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('images/drama/%22%E5%8D%81%E5%B9%B4%E7%9B%9B%E7%AD%B5%EF%BC%8C%E8%BF%8E%E9%A3%8E%E3%80%8C%E5%90%AF%E3%80%8D%E9%A3%9E%22%E6%88%8F%E5%89%A7%E6%BC%94%E8%89%BA%E6%AF%94%E8%B5%9B.png')">
+                <img src="images/drama/%22%E5%8D%81%E5%B9%B4%E7%9B%9B%E7%AD%B5%EF%BC%8C%E8%BF%8E%E9%A3%8E%E3%80%8C%E5%90%AF%E3%80%8D%E9%A3%9E%22%E6%88%8F%E5%89%A7%E6%BC%94%E8%89%BA%E6%AF%94%E8%B5%9B.png" alt="戏剧比赛" loading="lazy">
+                <div class="cap">"十年盛筵，迎风启飞" 戏剧演绎比赛</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('images/drama/%22%E6%8B%BE%E5%BF%86%22%E4%B8%89%E5%B9%95%E5%B1%95%E6%BC%94.pic.jpg')">
+                <img src="images/drama/%22%E6%8B%BE%E5%BF%86%22%E4%B8%89%E5%B9%95%E5%B1%95%E6%BC%94.pic.jpg" alt="拾忆" loading="lazy">
+                <div class="cap">"拾·忆" 三幕展演</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('images/drama/%E3%80%8A%E4%B8%A4%E4%BA%AC%E5%8D%81%E4%BA%94%E6%97%A5%E3%80%8B%E8%88%9E%E5%8F%B0%E5%89%A7%E8%A7%82%E6%BC%94%E6%B4%BB%E5%8A%A8.pic.jpg')">
+                <img src="images/drama/%E3%80%8A%E4%B8%A4%E4%BA%AC%E5%8D%81%E4%BA%94%E6%97%A5%E3%80%8B%E8%88%9E%E5%8F%B0%E5%89%A7%E8%A7%82%E6%BC%94%E6%B4%BB%E5%8A%A8.pic.jpg" alt="两京十五日" loading="lazy">
+                <div class="cap">《两京十五日》舞台剧观演活动</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('images/drama/%E3%80%8A%E6%9A%97%E6%81%8B%E6%A1%83%E8%8A%B1%E6%BA%90%E3%80%8B%E4%B8%BB%E9%A2%98%E5%9B%B4%E8%AF%BB%E4%BC%9A.png')">
+                <img src="images/drama/%E3%80%8A%E6%9A%97%E6%81%8B%E6%A1%83%E8%8A%B1%E6%BA%90%E3%80%8B%E4%B8%BB%E9%A2%98%E5%9B%B4%E8%AF%BB%E4%BC%9A.png" alt="暗恋桃花源" loading="lazy">
+                <div class="cap">《暗恋桃花源》主题围读会</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('images/drama/%22%E5%8D%81%E5%B9%B4%E6%BD%AE%E8%B5%B7%EF%BC%8C%E5%8D%81%E5%B9%B4%E6%BD%AE%E9%B8%A3%22%E6%AF%95%E4%B8%9A%E5%AD%A3%E5%9B%B4%E8%AF%BB%E4%BC%9A.jpg')">
+                <img src="images/drama/%22%E5%8D%81%E5%B9%B4%E6%BD%AE%E8%B5%B7%EF%BC%8C%E5%8D%81%E5%B9%B4%E6%BD%AE%E9%B8%A3%22%E6%AF%95%E4%B8%9A%E5%AD%A3%E5%9B%B4%E8%AF%BB%E4%BC%9A.jpg" alt="毕业季" loading="lazy">
+                <div class="cap">"十年潮起，十年潮鸣" 毕业季围读会</div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/drama/%22%E7%BC%84%E9%BB%98%22%E6%96%B0%E7%94%9F%E4%B8%89%E5%B9%95%E5%B1%95%E6%BC%941.png')">
+                <img src="images/drama/%22%E7%BC%84%E9%BB%98%22%E6%96%B0%E7%94%9F%E4%B8%89%E5%B9%95%E5%B1%95%E6%BC%941.png" alt="新生展演" loading="lazy">
+                <div class="cap">"缄默" 新生三幕展演 · 2024级新生首秀</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('images/drama/%E7%8E%A9%E5%81%B6%E4%B9%8B%E5%AE%B6%E5%90%88%E7%85%A7.png')">
+                <img src="images/drama/%E7%8E%A9%E5%81%B6%E4%B9%8B%E5%AE%B6%E5%90%88%E7%85%A7.png" alt="玩偶之家" loading="lazy">
+                <div class="cap">《玩偶之家》大戏展演 · 全组演员合照</div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>📧 bulailai040315@gmail.com &nbsp;·&nbsp; 📞 +86 188-6129-5982</p>
+    <p style="margin-top:8px; font-size:12px; opacity:0.6;">Xuanlei Bu · 2026</p>
+</footer>
+
+</body>
+</html>
