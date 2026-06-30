@@ -237,6 +237,10 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
     <h1>卜萱蕾</h1>
     <div class="sub">写写东西 · 做做数据 · 偶尔写个剧本</div>
     <div class="info">江苏第二师范学院 · 汉语言文学（师范）  ｜  香港城市大学 · 中国语言文学与历史（2026秋入学）</div>
+    <div style="position:absolute;top:20px;right:28px;z-index:10;display:flex;gap:10px;">
+        <a href="index.html" style="color:#fff;text-decoration:none;font-size:13px;letter-spacing:1px;padding:4px 10px;border:1px solid rgba(255,255,255,0.3);border-radius:4px;">中</a>
+        <a href="en.html" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;letter-spacing:1px;padding:4px 10px;border:1px solid rgba(255,255,255,0.15);border-radius:4px;">EN</a>
+    </div>
 </header>
 
 <section>
@@ -295,6 +299,41 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
 
 <section>
     <div class="container">
+        <div class="sec-title">财经内容 · 更多作品</div>
+        <p style="text-align:center; color:#7a6054; margin-bottom:24px; font-size:14px;">更多在 Datayes 实习期间产出的财经资讯截图</p>
+        <div class="grid">
+            <div class="card" onclick="openLightbox('images/financial_news_5.png')">
+                <img src="images/financial_news_5.png" alt="财经" loading="lazy">
+                <div class="info"><div class="tag">财经快讯</div><h3>资本市场动态</h3><p>快讯覆盖宏观经济政策与市场热点</p></div>
+            </div>
+            <div class="card" onclick="openLightbox('images/financial_news_6.png')">
+                <img src="images/financial_news_6.png" alt="数据" loading="lazy">
+                <div class="info"><div class="tag">市场数据</div><h3>涨停数据日报</h3><p>每日跟踪涨停股与资金流向分析</p></div>
+            </div>
+            <div class="card" onclick="openLightbox('images/financial_news_7.png')">
+                <img src="images/financial_news_7.png" alt="研报" loading="lazy">
+                <div class="info"><div class="tag">研报摘要</div><h3>海外研报翻译</h3><p>翻译解读海外机构研报核心观点</p></div>
+            </div>
+            <div class="card" onclick="openLightbox('images/financial_news_8.png')">
+                <img src="images/financial_news_8.png" alt="产业" loading="lazy">
+                <div class="info"><div class="tag">产业新闻</div><h3>行业深度追踪</h3><p>覆盖产业动态与行业发展趋势</p></div>
+            </div>
+            <div class="card" onclick="openLightbox('images/financial_news_9.png')">
+                <img src="images/financial_news_9.png" alt="宏观" loading="lazy">
+                <div class="info"><div class="tag">宏观经济</div><h3>宏观政策解读</h3><p>跟踪国务院会议与央行动态</p></div>
+            </div>
+            <div class="card" onclick="openLightbox('images/r.datayes.com_admin_feed_list.png')">
+                <img src="images/r.datayes.com_admin_feed_list.png" alt="后台" loading="lazy">
+                <div class="info"><div class="tag">后台管理</div><h3>资讯管理系统</h3><p>资讯后台管理界面截图</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="hr">
+
+<section>
+    <div class="container">
         <div class="sec-title">数据分析</div>
         <div class="data-list">
             <li><div><div class="name">涨停归因分析</div><div class="desc">使用 Python 对每日涨停个股进行归因分类，梳理驱动因素与市场逻辑</div></div><div class="tools">Python + Excel</div></li>
@@ -325,7 +364,32 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
 
 <section>
     <div class="container">
-        <div class="sec-title">学术</div>
+            <div class="sec-title">发表报道</div>
+        <p style="text-align:center; color:#7a6054; margin-bottom:16px; font-size:14px;">实习期间在报纸和电视上发表的新闻作品</p>
+
+        <div class="sec-title" style="font-size:13px; margin-bottom:14px;">常州武进融媒体中心 · 报道</div>
+        <div class="data-list" style="margin-top:10px;">
+            <li><div><div class="name">"龙城学子游龙城"新春回乡行活动</div><div class="desc">武进区2024年新春学子回乡行活动报道（2024-01-19）</div></div></li>
+            <li><div><div class="name">洛阳镇"工会常伴·贴心送暖"暖冬行动</div><div class="desc">寒潮中慰问坚守岗位的劳动者（2024-01-25）</div></div></li>
+            <li><div><div class="name">圩塘轮渡：加强渡轮安全保障 确保春运客运畅通</div><div class="desc">春运期间渡轮安全升级专题报道（2024-01-30）</div></div></li>
+            <li><div><div class="name">滨湖污水处理厂二期工程进度超出预期</div><div class="desc">水环境治理项目进展报道</div></div></li>
+            <li><div><div class="name">豪森智能化转型 · 武进站春运保障 · 委员风采</div><div class="desc">二月多篇新闻采访报道（2024-02）</div></div></li>
+        </div>
+
+        <div class="sec-title" style="font-size:13px; margin-top:22px; margin-bottom:14px;">第一财经（CBN）· 浦东频道 · 上海自贸区报道</div>
+        <div class="data-list" style="margin-top:10px;">
+            <li><div style="padding-right:14px;"><div class="name">上海自贸区创新金融科技应用场景 深入推进金融产业聚集</div><div class="desc">独立完成的上海自贸区专题报道之一</div></div><a href="images/papers/上海自贸区创新金融科技应用场景 深入推进金融产业聚集.pdf" class="link-btn" target="_blank">查看</a></li>
+            <li><div style="padding-right:14px;"><div class="name">上海自贸区外商投资准入负面清单从190条缩减至27条</div><div class="desc">独立完成的上海自贸区专题报道之二</div></div><a href="images/papers/上海自贸区外商投资准入负面清单从190条缩减至27条.pdf" class="link-btn" target="_blank">查看</a></li>
+            <li><div style="padding-right:14px;"><div class="name">推进上海自贸区高水平制度型开放 33条试点落地实施</div><div class="desc">独立完成的上海自贸区专题报道之三</div></div><a href="images/papers/推进上海自贸区高水平制度型开放 33条试点落地实施.pdf" class="link-btn" target="_blank">查看</a></li>
+        </div>
+    </div>
+</section>
+
+<hr class="hr">
+
+<section>
+    <div class="container">
+        <div class="sec-title">学术
         <div class="data-list">
             <li>
                 <div style="padding-right:14px;">
